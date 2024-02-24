@@ -1,0 +1,316 @@
+[
+    {
+        "alang": "j[ap]n?",
+        "slang": ["chs", "sc", "cht", "tc", "chi", "zh", "und"],
+        "whitelist": ["chs&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["sc&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cht&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["ch&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["tc&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["zh&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中日"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["chs"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["sc"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cht"]
+    },
+    {
+        "inherit": "^",
+        "blacklist": ["dutch"],
+        "whitelist": ["tc"]
+    },
+    {
+        "alang": "eng?",
+        "slang": ["chs", "sc", "cht", "tc", "chi", "zh", "und"],
+        "whitelist": ["chs&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["sc&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cht&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["ch&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["tc&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["zh&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中英"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中上英下"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["简英"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["双语"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["特效"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["简体&英文"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁英"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁体&英文"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁體&英文"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["chs"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["sc"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cht"]
+    },
+    {
+        "inherit": "^",
+        "blacklist": ["dutch"],
+        "whitelist": ["tc"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["简"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁"]
+    },
+    {
+        "alang": "*",
+        "slang": ["chs", "sc", "cht", "tc", "chi", "zh", "und"],
+        "whitelist": ["chs&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["sc&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cht&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["ch&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["tc&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["zh&j[ap]n?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["chs&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["sc&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cht&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["ch&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["tc&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["zh&eng?"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中日"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中英"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中上英下"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["简英"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["双语"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["特效"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["简体&英文"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁英"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁体&英文"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁體&英文"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["chs"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["sc"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cn"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["hans"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cht"]
+    },
+    {
+        "inherit": "^",
+        "blacklist": ["dutch"],
+        "whitelist": ["tc"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["hant"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["hk"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["tw"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["简"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["中"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["繁"]
+    },
+    {
+        "alang": "*",
+        "slang": "und",
+        "blacklist": [ "sign", "song", "danmaku" ]
+    },
+    {
+        "alang": "*",
+        "slang": ["chi", "zh", "und"],
+        "whitelist": ["simplified"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["traditional"]
+    },
+    {
+        "alang": "*",
+        "slang": "chi"
+    },
+    {
+        "alang": "*",
+        "slang": "zh"
+    },
+    {
+        "alang": "*",
+        "slang": "default"
+    },
+    {
+        "alang": "*",
+        "slang": "forced"
+    },
+    {
+        "alang": "*",
+        "slang": "j[ap]n?",
+        "blacklist": [ "sign", "song" ]
+    },
+    {
+        "alang": "*",
+        "slang": "eng?",
+        "blacklist": [ "sign", "song" ]
+    }
+]
