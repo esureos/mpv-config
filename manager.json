@@ -27,9 +27,26 @@
     "dest":"~~/scripts"
   },
   {
+    "git":"https://github.com/dyphire/mpv-clipboard",
+    "branch":"dev",
+    "whitelist":"%.lua$",
+    "dest":"~~/scripts"
+  },
+  {
     "git":"https://github.com/dyphire/chapterskip",
     "branch":"dev",
     "whitelist":"%.lua$",
+    "dest":"~~/scripts"
+  },
+  {
+    "git":"https://github.com/dyphire/detuur-mpv-scripts",
+    "branch":"dev",
+    "whitelist":"skiptosilence%.lua$",
+    "dest":"~~/scripts"
+  },
+  {
+    "git":"https://github.com/dyphire/yuukidach-mpv-scripts",
+    "whitelist":"history%-bookmark%.lua$",
     "dest":"~~/scripts"
   },
   {
@@ -49,11 +66,6 @@
     "branch":"main",
     "whitelist":"readme%.md$|main%.lua$|webui%-page",
     "dest":"~~/scripts/simple-mpv-webui"
-  },
-  {
-    "git":"https://github.com/datasone/MPVMediaControl",
-    "whitelist":"%.lua$",
-    "dest":"~~/scripts"
   },
   {
     "git":"https://github.com/qwerty12/mpv-taskbar-buttons",
@@ -86,11 +98,6 @@
     "git":"https://github.com/CogentRedTester/mpv-file-browser",
     "whitelist":"main%.lua$|readme%.md$|doc|modules",
     "dest":"~~/scripts/file-browser"
-  },
-  {
-    "git":"https://github.com/CogentRedTester/mpv-clipboard",
-    "whitelist":"%.lua$",
-    "dest":"~~/scripts"
   },
   {
     "git":"https://github.com/CogentRedTester/mpv-segment-linking",
