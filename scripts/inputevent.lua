@@ -30,6 +30,13 @@ local event_pattern = {
     { to = "release", from = "up", length = 1 },
 }
 
+local supported_events = {
+    ["repeat"] = true
+}
+for _, value in ipairs(event_pattern) do
+    supported_events[value.to] = true
+end
+
 -- https://mpv.io/manual/master/#input-command-prefixes
 local prefixes = { "osd-auto", "no-osd", "osd-bar", "osd-msg", "osd-msg-bar", "raw", "expand-properties", "repeatable",
     "async", "sync" }
@@ -76,10 +83,6 @@ function table:filter(filter)
     return nt
 end
 
-function table:remove(element)
-    return table.filter(self, function(i, v) return v ~= element end)
-end
-
 function table:join(separator)
     local result = ""
     for i, v in ipairs(self) do
@@ -113,8 +116,10 @@ local function debounce(func, wait)
 
     local timer = nil
     local timer_end = function()
-        timer:kill()
-        timer = nil
+        if timer then
+            timer:kill()
+            timer = nil
+        end
         func()
     end
 
@@ -368,6 +373,16 @@ function InputEvent:handler(event)
         end
     end
 
+    if event == "cancel" then
+        if #self.queue == 0 then
+            self:emit("release")
+            return
+        end
+
+        table.remove(self.queue)
+        return
+    end
+
     self.queue = table.push(self.queue, event)
     self.exec_debounced()
 end
@@ -402,7 +417,10 @@ end
 
 function InputEvent:bind()
     self.exec_debounced = debounce(function() self:exec() end, self.duration)
-    mp.add_forced_key_binding(self.key, self.key, function(e) self:handler(e.event) end, { complex = true })
+    mp.add_forced_key_binding(self.key, self.key, function(e)
+        local event = e.canceled and "cancel" or e.event
+        self:handler(event)
+    end, { complex = true })
 end
 
 function InputEvent:unbind()
@@ -438,8 +456,6 @@ local function unbind(key)
     bind_map[key]:unbind()
 end
 
-local function comment_filter(i, v) return v:match("^@") end
-
 local function read_conf(conf_path)
     local conf_meta, meta_error = utils.file_info(conf_path)
     if not conf_meta or not conf_meta.is_file then
@@ -453,7 +469,7 @@ local function read_conf(conf_path)
         if line ~= "" and line:sub(1, 1) ~= "#" then
             local key, cmd, comments = line:match("%s*([%S]+)%s+(.-)%s+#%s*(.-)%s*$")
             if comments then
-                local comment = table.filter(comments:split("#"), comment_filter)
+                local comment = table.filter(comments:split("#"), function(i, v) return v:match("^@") end)
                 if comment and #comment > 0 then
                     local statement = comment[1]:match("^@(.*)"):trim()
                     if statement and statement ~= "" then
@@ -463,6 +479,8 @@ local function read_conf(conf_path)
                         if #parts > 1 then
                             event, cond = statement:match("(.-)%s*|%s*(.-)$")
                         end
+
+                        if not supported_events[event] then event = "click" end
 
                         if parsed[key] == nil then
                             parsed[key] = {}
@@ -485,20 +503,30 @@ local function read_conf(conf_path)
     return parsed
 end
 
-mp.observe_property("input-doubleclick-time", "native", function(_, new_duration)
+function on_input_doubleclick_time_update(_, duration)
     for _, binding in pairs(bind_map) do
-        binding:rebind({ duration = new_duration })
+        binding:rebind({ duration = duration })
     end
-end)
+end
 
-mp.observe_property("focused", "native", function(_, focused)
+function on_focused_update(_, focused)
+    if not focused then
+        return
+    end
+
     local binding = bind_map["MBTN_LEFT"]
-    if not binding or not focused then return end
-    binding:ignore("click", 100)
-end)
+    if not binding then
+        return
+    end
+
+    binding:ignore("click", binding.duration)
+end
+
 
 mp.register_script_message("bind", bind)
 mp.register_script_message("unbind", unbind)
+mp.observe_property("input-doubleclick-time", "native", on_input_doubleclick_time_update)
+mp.observe_property("focused", "native", on_focused_update)
 
 local input_conf = mp.get_property_native("input-conf")
 local input_conf_path = mp.command_native({ "expand-path", input_conf == "" and "~~/input.conf" or input_conf })
