@@ -437,6 +437,7 @@ function scan_dir(path, current_file, dir_mode, separator, dir_depth, total_file
         return
     end
     msg.trace("scanning: " .. path)
+
     local files = utils.readdir(path, "files") or {}
     local dirs = dir_mode ~= "ignore" and utils.readdir(path, "dirs") or {}
     local prefix = path == "." and "" or path
@@ -501,6 +502,12 @@ function find_and_add_entries()
         return
     elseif #dir == 0 then
         msg.debug("stopping: not a local path")
+        return
+    end
+
+    local pathinfo = utils.file_info(path)
+    if pathinfo and pathinfo.is_dir then
+        msg.debug("stopping: path is a directory")
         return
     end
 

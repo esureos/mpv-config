@@ -1064,6 +1064,8 @@ title_replace
 
 自定义标题解析中的额外替换规则，内容格式为 JSON 字符串，替换模式为 lua 的 string.gsub 函数
 
+同时支持 JSON 规则文件路径（如 ~~/script-opts/title_replace.json），文件内容格式与示例字符串规则相同
+
 注意⚠️：由于 mpv 的 lua 版本限制，自定义规则只支持形如 %n 的捕获组写法，即示例用法，不支持直接替换字符的写法
 
 用法示例：
@@ -1121,6 +1123,64 @@ history_path
 
 ```
 history_path=/path/to/your/danmaku-history.json
+```
+
+</details>
+
+---
+
+<details>
+<summary>
+search_history_path
+
+> 指定弹幕搜索历史记录文件路径
+
+</summary>
+
+### search_history_path
+
+#### 功能说明
+
+指定弹幕搜索历史记录文件的路径，支持绝对路径和相对路径。默认值是 `~~/danmaku-search-history.json` 也就是mpv配置文件夹的根目录下。
+
+开启后，搜索过的弹幕关键词会记录在搜索菜单中（去重置顶，最近使用的排在最前），下次打开搜索菜单时可以直接选择历史关键词重新搜索，无需重复输入。
+
+> **⚠️NOTE！**
+> 
+> 留空此选项可禁用搜索历史功能
+
+#### 使用示例
+
+想要配置此选项，请在mpv配置文件夹下的 `script-opts`中创建 `uosc_danmaku.conf`文件并添加类似如下内容：
+
+```
+search_history_path=/path/to/your/danmaku-search-history.json
+```
+
+</details>
+
+---
+
+<details>
+<summary>
+search_history_size
+
+> 指定搜索历史最多保留的条数
+
+</summary>
+
+### search_history_size
+
+#### 功能说明
+
+指定搜索历史最多保留的条数。超出上限时从最早的记录开始丢弃，默认值为 `15`，小于 1 表示不限制。
+
+#### 使用示例
+
+想要配置此选项，请在mpv配置文件夹下的 `script-opts`中创建 `uosc_danmaku.conf`文件并添加类似如下内容：
+
+```
+search_history_size=30
 ```
 
 </details>

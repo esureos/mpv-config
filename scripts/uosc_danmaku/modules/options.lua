@@ -47,6 +47,10 @@ options = {
     merge_fontsize_max = 100,
     -- 指定弹幕关联历史记录文件的路径，支持绝对路径和相对路径
     history_path = "~~/danmaku-history.json",
+    -- 指定弹幕搜索历史记录文件的路径，支持绝对路径和相对路径。留空禁用搜索历史功能
+    search_history_path = "~~/danmaku-search-history.json",
+    -- 搜索历史最多保留的条数，小于 1 表示不限制
+    search_history_size = 15,
     -- 自定义插件快捷键，若 mpv.conf 里设置 input-default-bindings=no 将禁用以下两个选项
     open_search_danmaku_menu_key = "Ctrl+d",
     show_danmaku_keyboard_key = "j",
@@ -76,12 +80,13 @@ options = {
     --支持 lua 的正则表达式写法
     blacklist_path = "",
     --指定脚本相关消息显示的消息的对齐方式
-    message_anlignment = 7,
+    message_alignment = 7,
     --指定脚本相关消息显示的消息的x轴坐标
     message_x = 30,
     --指定脚本相关消息显示的消息的y轴坐标
     message_y = 30,
     -- 自定义标题解析中的额外替换规则，内容格式为 JSON 字符串，替换模式为 lua 的 string.gsub 函数
+    -- 同时支持 JSON 规则文件路径（如 ~~/script-opts/title_replace.json ），文件内容格式与示例字符串规则相同
     --! 注意：由于 mpv 的 lua 版本限制，自定义规则只支持形如 %n 的捕获组写法，即示例用法，不支持直接替换字符的写法
     title_replace = [[
        [{ 
